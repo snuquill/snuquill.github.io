@@ -3,7 +3,6 @@ current index: 200
 1. upload image on Amazon S3
 2. create a {[article_id}.md file
 3. Fill this in:
-
      ---
       layout: article
       title: {title}
