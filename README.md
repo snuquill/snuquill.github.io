@@ -5,7 +5,6 @@ current index: 200
 3. Fill this in:
 
 ---
-
 `---`
       layout: article
       title: {title}
@@ -16,7 +15,6 @@ current index: 200
       publish_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
       modified_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
 `---`
-
 ---
 
 5. Add article content in markdown format
