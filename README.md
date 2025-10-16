@@ -4,7 +4,8 @@ current index: 200
 2. create a {[article_id}.md file
 3. Fill this in:
 
-`---
+```
+---
       layout: article
       title: {title}
       article_id: {current index +1}
@@ -13,7 +14,8 @@ current index: 200
       picture_url: {s3 link}
       publish_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
       modified_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
----`
+---
+```
 
 5. Add article content in markdown format
 6. Upload to _articles file
