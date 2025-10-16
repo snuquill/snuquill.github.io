@@ -6,14 +6,14 @@ current index: 200
 
 ```
 ---
-      layout: article
-      title: {title}
-      article_id: {current index +1}
-      category: "FEATURES" "SNU_SOCIETY" "SHORT_ARTICLES" "ARTS_CULTURE" or "OPINION" 
-      author_name: {author name}
-      picture_url: {s3 link}
-      publish_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
-      modified_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
+layout: article
+title: {title}
+article_id: {current index +1}
+category: "FEATURES" "SNU_SOCIETY" "SHORT_ARTICLES" "ARTS_CULTURE" or "OPINION" 
+author_name: {author name}
+picture_url: {s3 link}
+publish_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
+modified_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
 ---
 ```
 
