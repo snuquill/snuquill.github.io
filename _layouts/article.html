@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{page.title}}</title>
+        <link rel="icon" href="{{ '/assets/images/logo.svg' | relative_url }}">
+        <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    </head>
+    <body>
+        {% include navigation.html %}
+        <article>
+        <div class="article-body">
+            <div class="main-image">
+                {% if page.picture_url %}
+                    <img src="{{ page.picture_url }}" alt="{{ page.title }}" class="article-image">
+                {% endif %}
+            </div>
+            <div class="article-category">{{ page.category }}</div>
+            <div class="headline">
+                <p>{{ page.title }}</p>
+            </div>
+            <div class="article-content">
+                <div>{{ content }}</div>
+                <p></p>
+                <p></p>
+                <p></p>
+                <div id="color-line"></div>
+                <div class="article-footer" id="article-footer">
+                    <div class="image-box">
+                        <img src="/assets/images/pfp.svg" alt="">
+                    </div>
+                    <div class="author-box">
+                        <div class="author-role"></div>
+                        <div class="author-name">{{ page.author_name }}</div>
+                        <div class="author-email"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-navigation">
+
+            </div>
+        </div>
+        {% include footer.html %}
+    </body>
+</html>

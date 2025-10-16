@@ -1,0 +1,37 @@
+---
+layout: default
+title: FEATURES
+---
+<main>
+    <div class="features-container">
+    <div class="features-intro-container">
+        <div class="features-intro-title">
+            
+            <h3>FEATURES</h3>
+        </div>
+        <div class="features-intro-content" style="height: 1963px;">
+            <h2>Deals with general affairs, from domestic to international news.</h2>
+             <!-- 퀵 메뉴 바 -->
+            <hr class="quickNavBar-line">
+        </div>
+    </div>
+    <div class="articles-container">
+        <div class="articles-list">
+            {% assign filtered_posts = site.articles | where: "category", "FEATURES" %}
+            {% assign sorted_posts = filtered_posts | sort: "publish_date" | reverse %}
+
+            {% for post in sorted_posts %}
+            <div class="article hover-pointer" onclick="window.location.href='{{ post.url }}'">
+                <div class="article-thumbnail">
+                    <img src="{{ post.picture_url }}">
+                </div>
+                <div class="article-preview-container">
+                    <div class="article-preview-title">{{ post.title }}</div>
+                    <div class="article-preview-author">{{ post.author_name }}</div>
+                    <div class="article-preview-content">{{ post.content | strip_html | truncate: 200 }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
