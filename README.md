@@ -22,7 +22,7 @@ modified_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
 7. Change current index in README.md
 # To Do
 - [x] create archives page
-- [ ] create meet the staff page
+- [x] create meet the staff page
 - [ ] create feedback and complaints page
 - [ ] create advertise with us page
 - [ ] add email form in letter to the editor
@@ -33,3 +33,4 @@ modified_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
 - [ ] add javascript slider for photojournals
 - [ ] google analytics
 - [ ] add paginate feature for archives
+- [ ] add paginate feature for meet the staff
