@@ -1288,8 +1288,7 @@ page-flipper
 .meet-the-staff-container {
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
-    margin-bottom: 200px;
+    margin: 50px auto 200px auto;
     width: 1140px;
 }
 
@@ -1328,8 +1327,8 @@ page-flipper
     flex-direction: column;
     align-items: left;
     justify-content: center;
-    max-width:1000px;
-    width: 96%;
+    width: 100%;
+    max-width: 1140px;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
