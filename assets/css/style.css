@@ -1046,7 +1046,7 @@ articles
 
 .article-thumbnail>img {
     width: 220px;
-    height: 145px;
+    max-height: 145px;
     flex-shrink: 0;
     object-fit: cover;
 }
