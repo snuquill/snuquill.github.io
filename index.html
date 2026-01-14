@@ -14,22 +14,19 @@ title: SNU QUILL
                         <p>In a campus this big, no student should ever feel like there’s nowhere to go.</p>
                     </div>
                 </div>
+                {% assign recent_articles = site.articles
+                    | sort: "publish_date"
+                    | reverse
+                    | slice: 0, 3 %}
+                
                 <div class="recent-article-list">
-                    <div class="recent-article hover-pointer" onclick="window.location.href='/article/200'">
-                        <h4>[83rd Edition] Letter from the Editor</h4>
-                        <h5>Dear readers,The passing of The SNU Quill’s...</h5>
+                    {% for post in recent_articles %}
+                    <div class="recent-article hover-pointer" onclick="window.location.href='{{post.url}}'">
+                        <h4>{{ post.title }}</h4>
+                        <h5>{{ post.content | strip_html | truncate: 40 }}</h5>
                         <hr>
                     </div>
-                    <div class="recent-article hover-pointer" onclick="window.location.href='/article/199'">
-                        <h4>[Opinion] The Diversity Agenda at Korean Universities: Gender Equality is Still a Top Priority</h4>
-                        <h5>Since 2018, the Diversity Council has run an...</h5>
-                        <hr>
-                    </div>
-                    <div class="recent-article hover-pointer" onclick="window.location.href='/article/198'">
-                        <h4>Visible Space, Invisible Issues: A Report on Spatial Imbalance at SNU</h4>
-                        <h5>Every semester, Seoul National University’s Gwa...</h5>
-                        <hr>
-                    </div>
+                    {% end for %}
                 </div>
             </div>
             <div class="editors-picks-body">
