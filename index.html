@@ -14,12 +14,8 @@ title: SNU QUILL
                         <p>In a campus this big, no student should ever feel like there’s nowhere to go.</p>
                     </div>
                 </div>
-                {% assign recent_articles = site.articles
-                  | where_exp: "post", "post.publish_date"
-                  | sort: "publish_date"
-                  | reverse
-                  | slice: 0, 3 %}
-
+                {% assign sorted_posts = site.articles | sort: "publish_date" | reverse %}
+                {% assign recent_articles = sorted_posts | slice: 0, 3 %}
                 
                 <div class="recent-article-list">
                     {% for post in recent_articles %}
