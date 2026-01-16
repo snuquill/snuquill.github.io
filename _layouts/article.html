@@ -23,7 +23,17 @@
                     <img src="{{ page.picture_url }}" alt="{{ page.title }}" class="article-image">
                 {% endif %}
             </div>
-            <div class="article-category">{{ page.category }}</div>
+            <div class="article-category">
+                {% if page.category == "ARTS_CULTURE" %}
+                    ARTS &amp; CULTURE
+                {% elsif page.category == "SHORT_ARTICLES" %}
+                    SHORT ARTICLES
+                {% elsif page.category == "SNU_SOCIETY" %}
+                    SNU SOCIETY
+                {% else %}
+                    {{ page.category }}
+                {% endif %}
+            </div>
             <div class="headline">
                 <p>{{ page.title }}</p>
             </div>
