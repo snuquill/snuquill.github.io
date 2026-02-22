@@ -5,13 +5,13 @@
       "members": [
         {
           "name": "Lee Hee Seo",
-          "role": "Editor-in-Chief, Short Articles Editor",
+          "role": "Editor-in-Chief, <br>Short Articles Editor",
           "email": "heeseolee@snu.ac.kr",
           "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/19c970b7-848e-4e8c-833a-202475180ef0.jpg"
         },
         {
           "name": "Chae Soomin",
-          "role": "Editor-at-Large, A&C Editor",
+          "role": "Editor-at-Large, <br>A&C Editor",
           "email": "soominchae@naver.com",
           "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/ecfb99d0-ab90-41b2-813e-acd367b9c422.jpg"
         },
@@ -162,37 +162,37 @@
       "members": [
         {
           "name": "Moon Seowon",
-          "role": "Strategic Planner (Marketing)",
+          "role": "Strategic Planner <br>(Marketing)",
           "email": "imseowon@snu.ac.kr",
           "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
         },
         {
           "name": "Calina Pamplona",
-          "role": "Strategic Planner (Marketing)",
+          "role": "Strategic Planner <br>(Marketing)",
           "email": "snuquill@gmail.com",
           "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
         },
         {
           "name": "Kim Yunsol",
-          "role": "Strategic Planner (External Relations)",
+          "role": "Strategic Planner <br>(External Relations)",
           "email": "snuquill@gmail.com",
           "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
         },
         {
           "name": "Jun Injoon",
-          "role": "Strategic Planner (External Relations)",
+          "role": "Strategic Planner <br>(External Relations)",
           "email": "snuquill@gmail.com",
           "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
         },
         {
           "name": "Kim Wonyoung",
-          "role": "Strategic Planner (Accounting)",
+          "role": "Strategic Planner <br>(Accounting)",
           "email": "snuquill@gmail.com",
           "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
         },
         {
           "name": "Lee Hien Minh",
-          "role": "Strategic Planner (Accounting)",
+          "role": "Strategic Planner <br>(Accounting)",
           "email": "snuquill@gmail.com",
           "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
         }
