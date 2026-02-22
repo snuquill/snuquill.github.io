@@ -1,0 +1,202 @@
+{
+  "teams": [
+    {
+      "name": "Exec Team",
+      "members": [
+        {
+          "name": "Lee Hee Seo",
+          "role": "Editor-in-Chief, Short Articles Editor",
+          "email": "heeseolee@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/19c970b7-848e-4e8c-833a-202475180ef0.jpg"
+        },
+        {
+          "name": "Chae Soomin",
+          "role": "Editor-at-Large, A&C Editor",
+          "email": "soominchae@naver.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/ecfb99d0-ab90-41b2-813e-acd367b9c422.jpg"
+        },
+        {
+          "name": "Hyun Jooyoung",
+          "role": "Website Administrator",
+          "email": "zoozero@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/718a75f3-bf32-4a8d-be4d-bc111d7801c5.jpg"
+        },
+        {
+          "name": "Vu Hana",
+          "role": "Director of Strategy",
+          "email": "snuquill@gmail.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Shin Hyewon",
+          "role": "Director of Art",
+          "email": "ixnerpeaxe@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Kang Dayoon",
+          "role": "A&C Subeditor",
+          "email": "dykang22@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/ed574191-3366-4329-89e5-a1f89aa3323c.jpg"
+        },
+        {
+          "name": "Yoon Jaein",
+          "role": "Features Editor",
+          "email": "jane01@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Lee Yeryoung",
+          "role": "Features Subeditor",
+          "email": "yeryounglee@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Kim Suk Hee",
+          "role": "SNUS Editor",
+          "email": "snuquill@gmail.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Features Team",
+      "members": [
+        {
+          "name": "Kim Juhyung",
+          "role": "Features Reporter",
+          "email": "csjay@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Moon Seowon",
+          "role": "Features Reporter",
+          "email": "imseowon@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Park Yoojin",
+          "role": "Features Reporter",
+          "email": "ugenie0925@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        }
+      ]
+    },
+    {
+      "name": "SNUS Team",
+      "members": [
+        {
+          "name": "Lim JunSeop",
+          "role": "SNUS Reporter",
+          "email": "junseop225@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Lee Doyeon",
+          "role": "SNUS Reporter",
+          "email": "doyeon327@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Do Quyen",
+          "role": "SNUS Reporter",
+          "email": "doquyen0604@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        }
+      ]
+    },
+    {
+      "name": "A&C Team",
+      "members": [
+        {
+          "name": "Lee Eusun",
+          "role": "A&C Reporter",
+          "email": "snuquill@gmail.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Rishika Mahanta",
+          "role": "A&C Reporter",
+          "email": "rishikamahanta628@gmail.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Rhyu Suah",
+          "role": "A&C Reporter",
+          "email": "suahrhyu@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Art Team",
+      "members": [
+        {
+          "name": "Park Josephine Daeun",
+          "role": "Features Designer, Photographer",
+          "email": "snuquill@gmail.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Ian Musembi",
+          "role": "Photographer",
+          "email": "snuquill@gmail.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Nam Hee Su",
+          "role": "SNUS designer",
+          "email": "snuquill@gmail.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Shin Yeji",
+          "role": "A&C Designer",
+          "email": "snuquill@gmail.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Strategic Planning Team",
+      "members": [
+        {
+          "name": "Moon Seowon",
+          "role": "Strategic Planner (Marketing)",
+          "email": "imseowon@snu.ac.kr",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Calina Pamplona",
+          "role": "Strategic Planner (Marketing)",
+          "email": "snuquill@gmail.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Kim Yunsol",
+          "role": "Strategic Planner (External Relations)",
+          "email": "snuquill@gmail.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Jun Injoon",
+          "role": "Strategic Planner (External Relations)",
+          "email": "snuquill@gmail.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Kim Wonyoung",
+          "role": "Strategic Planner (Accounting)",
+          "email": "snuquill@gmail.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        },
+        {
+          "name": "Lee Hien Minh",
+          "role": "Strategic Planner (Accounting)",
+          "email": "snuquill@gmail.com",
+          "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/staff-profile/5951fd15-f030-4ff6-af29-0bddcd41a036.jpg"
+        }
+      ]
+    }
+  ]
+}
