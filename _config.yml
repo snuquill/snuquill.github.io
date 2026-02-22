@@ -33,6 +33,8 @@ collections:
   articles:
     output: true
     permalink: article/:path/
+  pages:
+    output: true
 
 
 # Exclude from processing.

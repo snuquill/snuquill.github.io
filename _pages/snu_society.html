@@ -1,0 +1,78 @@
+---
+layout: default
+title: SNU SOCIETY
+permalink: /snu_society
+---
+<main>
+    <div class="features-container">
+    <div class="features-intro-container">
+        <div class="features-intro-title">
+            
+            <h3>SNU SOCIETY</h3>
+        </div>
+        <div class="features-intro-content" style="height: 1963px;">
+            <h2>Deals with news on campus.</h2>
+             <!-- 퀵 메뉴 바 -->
+            <hr class="quickNavBar-line">
+        </div>
+    </div>
+    <div class="articles-container">
+      {% assign filtered_posts = site.articles | where: "category", "SNU_SOCIETY" %}
+      {% assign sorted_posts = filtered_posts | sort: "publish_date" | reverse %}
+
+      <div class="articles-list" id="articlesList">
+        {% for post in sorted_posts %}
+        <div
+          class="article hover-pointer article-item"
+          style="display: none;"
+          onclick="window.location.href='{{ post.url }}'">
+
+          <div class="article-thumbnail">
+            <img src="{{ post.picture_url }}" alt="{{ post.title }}">
+          </div>
+
+          <div class="article-preview-container">
+            <div class="article-preview-title">{{ post.title }}</div>
+            <div class="article-preview-author">{{ post.author_name }}</div>
+            <div class="article-preview-content">
+              {{ post.content | strip_html | truncate: 200 }}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <button id="loadMoreBtn" class="load-more">
+        Load more
+      </button>
+    </div>
+  </div>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const ITEMS_PER_LOAD = 10;
+  let visibleCount = 0;
+
+  const items = document.querySelectorAll(".article-item");
+  const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+  function showNextItems() {
+    for (let i = visibleCount; i < visibleCount + ITEMS_PER_LOAD; i++) {
+      if (items[i]) {
+        items[i].style.display = "flex";
+      }
+    }
+
+    visibleCount += ITEMS_PER_LOAD;
+
+    if (visibleCount >= items.length) {
+      loadMoreBtn.style.display = "none";
+    }
+  }
+
+  // initial render
+  showNextItems();
+
+  loadMoreBtn.addEventListener("click", showNextItems);
+});
+</script>

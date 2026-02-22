@@ -1034,6 +1034,9 @@ articles
     flex-direction: column;
     justify-content: space-between;
 }
+.article-item {
+  display: none;
+}
 
 .article {
     width: 733px;
@@ -1049,6 +1052,9 @@ articles
     height: 145px;
     flex-shrink: 0;
     object-fit: cover;
+}
+.article-thumbnail#opinion>img{
+    height:auto;
 }
 
 .article-preview-container {
@@ -1091,6 +1097,16 @@ articles
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+#loadMoreBtn {
+    font-family: 'Jost';
+    font-size: 16px;
+    border: 2px solid var(--Line-Color);
+    padding: 5px 10px;
+}
+button:hover {
+    cursor: pointer;
+    background-color: #D9D9D9;
 }
 
 .article-preview-content {

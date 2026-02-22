@@ -28,9 +28,9 @@ modified_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
 - [ ] add email form in letter to the editor
 - [ ] add paginate feature (features, snu society, short articles, arts and culture, opinion)
 - [ ] add recent articles navigation
-- [ ] add automatic recent articles in home
+- [x] add automatic recent articles in home
 - [ ] adjust css to support mobile and smaller screens
-- [ ] add javascript slider for photojournals
-- [ ] google analytics
+- [x] add javascript slider for photojournals
+- [x] google analytics
 - [ ] add paginate feature for archives
 - [ ] add paginate feature for meet the staff
