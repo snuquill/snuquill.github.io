@@ -34,3 +34,6 @@ modified_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
 - [x] google analytics
 - [ ] add paginate feature for archives
 - [ ] add paginate feature for meet the staff
+
+
+- to serve locally, use `bundle exec jekyll serve` in terminal
