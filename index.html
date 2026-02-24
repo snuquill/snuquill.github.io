@@ -16,10 +16,18 @@ title: SNU QUILL
                 </div>
                 {% assign sorted_posts = site.articles | sort: "publish_date" | reverse %}
                 <div class = "recent-article-list">
+                    <div class="home-title-container">
+                        <div class="home-title-text">
+                            Recent Articles
+                        </div>
+                        <div class="home-title-line-container">
+                            <hr class="home-title-line">
+                        </div>
+                    </div>
                     {% for post in sorted_posts limit:3 %}
                       <div class="recent-article hover-pointer" onclick="window.location.href='{{ post.url }}'">
                         <h4>{{ post.title }}</h4>
-                        <h5>{{ post.content | strip_html | truncatewords: 10 }}</h5>
+                        <h5>{{ post.content | strip_html }}</h5>
                         <hr>
                       </div>
                     {% endfor %}
