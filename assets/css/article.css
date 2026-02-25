@@ -63,8 +63,12 @@ div#color-line {
     min-height: 3px;
     background: var(--Main-Color);
 }
+.main-image {
+    text-align: center;
+}
 .main-image > img {
-    width: 100%;
+    width: 95%;
+    margin: 10px auto;
 }
 .image-box > img {
     width: 75px;

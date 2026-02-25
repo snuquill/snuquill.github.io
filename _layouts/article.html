@@ -20,12 +20,13 @@
     <body>
         {% include navigation.html %}
         <article>
-        <div class="article-body">
-            <div class="main-image">
+        <div class="main-image">
                 {% if page.picture_url %}
                     <img src="{{ page.picture_url }}" alt="{{ page.title }}" class="article-image">
                 {% endif %}
-            </div>
+        </div>
+        <div class="article-body">
+            
             <div class="article-category">
                 {% if page.category == "ARTS_CULTURE" %}
                     ARTS &amp; CULTURE
