@@ -1,8 +1,8 @@
 .archives-page-container {
-    margin: 20px 10%;
+    margin: 20px auto;
     flex-direction: column;
-    width: 1140px;
-
+    max-width: 1140px;
+    width: 95%;
     display: flex;
     justify-content: center;
 }
