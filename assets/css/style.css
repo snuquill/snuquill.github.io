@@ -185,6 +185,9 @@ footer{
     letter-spacing: 0.03em;
     color: #4B4B4B;
 }
+#join > p{
+    text-align:left;
+}
 /*Home*/
 .home-container {
     display: flex;
@@ -911,4 +914,16 @@ footer{
     opacity: .75;
     color: black;
 }
+.ad-banner {
+    width: 100%;
+    max-width: 1148px;
+    border: 1px solid #D9D9D9;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
 
+.ad-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
