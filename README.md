@@ -1,4 +1,4 @@
-current index: 207
+current index: 208
 # How to Upload Articles
 1. upload image on Amazon S3
 2. create a {[article_id}.md file
