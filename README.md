@@ -32,7 +32,7 @@ modified_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
 - [ ] adjust css to support mobile and smaller screens
 - [x] add javascript slider for photojournals
 - [x] google analytics
-- [ ] add paginate feature for archives
+- [x] add paginate feature for archives
 - [ ] add paginate feature for meet the staff
 
 
