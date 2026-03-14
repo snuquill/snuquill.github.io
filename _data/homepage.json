@@ -1,0 +1,30 @@
+{
+  "top_article": {
+    "title": "The Politicized Pulpit: South Korea's Churches at a Crossroads Between Radicalization and Renewal",
+    "summary": "Change won’t be easy, as it requires the Church to admit its shortcomings, potentially losing its power and members who prioritize political alignment over religious conscience.",
+    "image": "https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/article/e58d7f85-b673-4ea4-affc-28d2bf8352a8.png",
+    "link": "/article/211"
+  },
+  "editors_picks": [
+    {
+      "section": "FEATURES",
+      "title": "Korea's Stablecoin Dilemma: Innovation, Risks, and the Future of the Digital Won",
+      "link": "/article/210"
+    },
+    {
+      "section": "SNU SOCIETY",
+      "title": "The Death of Campus Dining at SNU",
+      "link": "/article/217"
+    },
+    {
+      "section": "ARTS & CULTURES",
+      "title": "Is Korea's Baseball League Throwing Curveballs?",
+      "link": "/article/218"
+    },
+    {
+      "section": "OPINION",
+      "title": "Why I Believe in Journalism in the Age of AI",
+      "link": "/article/208"
+    }
+  ]
+}

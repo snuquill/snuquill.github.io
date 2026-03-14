@@ -6,13 +6,20 @@ title: SNU QUILL
       <div class="page">
         <div class="home-container">
             <div class="top-article-container">
-                <div class="top-article hover-pointer" style="background-image: url(https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/article/9fec1598-0e2b-40cc-ba88-e22a1f56df7e.jpeg); background-size: cover;" onclick="window.location.href='/article/198'">
+                {% assign top = site.data.homepage.top_article %}
+
+                <div class="top-article hover-pointer"
+                    style="background-image: url('{{ top.image }}'); background-size: cover;"
+                    onclick="window.location.href='{{ top.link }}'">
+
                     <div class="top-article-title">
-                        <p>Visible Space, Invisible Issues: A Report on Spatial Imbalance at SNU</p>
+                        <p>{{ top.title }}</p>
                     </div>
+
                     <div class="top-article-summary">
-                        <p>In a campus this big, no student should ever feel like there’s nowhere to go.</p>
+                        <p>{{ top.summary }}</p>
                     </div>
+
                 </div>
                 {% assign sorted_posts = site.articles | sort: "publish_date" | reverse %}
                 <div class = "recent-article-list">
@@ -46,22 +53,14 @@ title: SNU QUILL
                         </div>
                     </div>
                     <div class="editors-picks-list">
+                    {% for pick in site.data.homepage.editors_picks %}
                         <div class="editors-pick">
-                            <h5>FEATURES</h5>
-                            <h4 onclick="window.location.href='/article/193'" class="hover-pointer">Driving Korea’s Future? AI Behind the Wheel and What It Means For Us</h4>
+                            <h5>{{ pick.section }}</h5>
+                            <h4 onclick="window.location.href='{{ pick.link }}'" class="hover-pointer">
+                                {{ pick.title }}
+                            </h4>
                         </div>
-                        <div class="editors-pick">
-                            <h5>SNU SOCIETY</h5>
-                            <h4 onclick="window.location.href='/article/197'" class="hover-pointer">A Closer Look at the “Inclusive” International Life at SNU</h4>
-                        </div>
-                        <div class="editors-pick">
-                            <h5>ARTS &amp; CULTURES</h5>
-                            <h4 onclick="window.location.href='/article/192'" class="hover-pointer">The Modern Lion King Tries to Convince You that Fascism Doesn’t Exist</h4>
-                        </div>
-                        <div class="editors-pick">
-                            <h5>OPINION</h5>
-                            <h4 onclick="window.location.href='/article/200'" class="hover-pointer">[83rd Edition] Letter from the Editor</h4>
-                        </div>
+                    {% endfor %}
                     </div>
                 </div>
             </div>
@@ -70,21 +69,22 @@ title: SNU QUILL
             </div>
             <div class="magazine-archive-container">
                 <div class="magazine-archive-slider">
-                    <!--Magazine은 3개만 받아온다.-->
-                    <div class="magazine-archive-slide hover-pointer" data-filelink="https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/magazine/0925_83.pdf" onclick="window.open(this.getAttribute('data-filelink'))">
-                        <img src="https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/magazine/0925_83.jpg">
+
+                    {% assign archives = site.data.archives | sort: "volume" | reverse %}
+                    {% for archive in archives limit:3 %}
+                    <div class="magazine-archive-slide hover-pointer"
+                        data-filelink="{{ archive.pdf }}"
+                        onclick="window.open(this.getAttribute('data-filelink'))">
+                        <img src="{{ archive.cover_image }}">
                     </div>
-                    <div class="magazine-archive-slide hover-pointer" data-filelink="https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/magazine/82.pdf" onclick="window.open(this.getAttribute('data-filelink'))">
-                        <img src="https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/magazine/fc6df5c1-c76d-4cc0-aaef-4f4c6bc14853.jpeg">
-                    </div>
-                    <div class="magazine-archive-slide hover-pointer" data-filelink="https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/magazine/0825_81+QUILL.pdf" onclick="window.open(this.getAttribute('data-filelink'))">
-                        <img src="https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/magazine/59f8ecd7-3f77-4f06-a50c-63a0b2b4a4af.png">
-                    </div>
+                    {% endfor %}
+
                     <div class="more-archive-slide hover-pointer" onclick="window.location.href='/archives/1'">
                         <div class="more-archive-slide">
                             click for<br>previous<br>volumes...
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="quill-videos-body">
@@ -121,16 +121,16 @@ title: SNU QUILL
                 </div>
                 <div class="photojournals-slider">
                     <div class="photojournals-slide">
-                        <img class="photo" src="https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/magazine/20250923_151112418.jpg">
-                        <div class="photojournals-content">Under the Hush of Noon</div>
+                        <img class="photo" src="https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/photojournal/1ac0d6f09-ec40-4d2e-91e7-bfad35004c1b.JPG">
+                        <div class="photojournals-content">Destinations imagined beyond the span</div>
                     </div>
                     <div class="photojournals-slide">
-                        <img class="photo" src="https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/magazine/20250923_151112418_01.jpg">
-                        <div class="photojournals-content">Carrying the Day with Him</div>
+                        <img class="photo" src="https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/photojournal/2e0139458-3bc5-4e18-92c4-96ea02574654.png">
+                        <div class="photojournals-content">Forms surface in light, shadows cast</div>
                     </div>
                     <div class="photojournals-slide">
-                        <img class="photo" src="https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/magazine/20250923_151035223_03.jpg">
-                        <div class="photojournals-content">Dinner in Comfortable Solitude</div>
+                        <img class="photo" src="https://snuquill-public-s3.s3.ap-northeast-2.amazonaws.com/photo/photojournal/39096451e-b337-4e10-adcc-a963a393f71a.JPG">
+                        <div class="photojournals-content">Momentum gathering along parallel paths</div>
                     </div>                
                 </div>
             </div>
