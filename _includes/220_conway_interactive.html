@@ -1,0 +1,395 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+#app { 
+  width: 99vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+#canvas-col {
+  position: sticky;
+  top: 0;
+  margin: auto auto;
+  height: 100vh;
+  z-index: 0;
+  max-height: 600px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-right: 20%;
+}
+canvas#gol {
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md, 8px);
+  background: var(--color-background-secondary);
+  display: block;
+  width: min(550px, 90vw);
+  height: min(550px, 90vw);
+}
+#steps-col {
+  z-index: 2;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 60vh;
+}
+.step-box {
+    width: 320px;
+  display: flex;
+  align-items: center;
+  padding: 1em 1em;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgb(170, 170, 170);
+  transition: opacity 0.4s;
+  opacity: 0.35;
+  margin-bottom: 50vh;
+  margin-left: 20%;
+}
+.step-box.active { opacity: 1; }
+
+@media (max-width: 1024px) {
+#app { position: relative; gap: 0; transform: translate(0,0)}
+#canvas-col {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  margin: auto auto;
+  height: 100vh;
+  z-index: 0;
+  max-height: 600px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+canvas#gol {
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md, 8px);
+  background: var(--color-background-secondary);
+  display: block;
+  width: min(550px, 90vw);
+  height: min(550px, 90vw);
+}
+#steps-col {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 10vh;
+}
+.step-box {
+    width: 320px;
+  display: flex;
+  align-items: center;
+  padding: 1em 1em;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgb(170, 170, 170);
+  transition: opacity 0.4s;
+  opacity: 0.35;
+  margin: 50vh auto;
+}
+.step-box.active { opacity: 1; }
+}
+
+.step-text {
+  line-height: 1.1;
+  color: var(--color-text-primary);
+}
+.step-text strong { font-weight: 500; }
+#scroll-indicator {
+  position: absolute;
+  left: 0;
+  width: 2px;
+  background: var(--color-border-secondary);
+  pointer-events: none;
+  transition: top 0.1s linear;
+}
+#steps-col { position: relative; }
+</style>
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)"></h2>
+<div id="app">
+  <div id="canvas-col">
+    <canvas id="gol"></canvas>
+  </div>
+  <div id="steps-col">
+    <div class="step-box" data-step="1">
+      <div class="step-text">Imagine a world governed by four rules on a grid, infinite and blank.</div>
+    </div>
+    <div class="step-box" data-step="2">
+      <div class="step-text">Each square holds a cell, alive or dead.</div>
+    </div>
+    <div class="step-box" data-step="3">
+      <div class="step-text">You choose the opening pattern, but once the game begins, no one decides what happens next. The rules do.</div>
+    </div>
+    <div class="step-box" data-step="4">
+      <div class="step-text">If a living cell has fewer than two neighbors, it dies of loneliness.</div>
+    </div>
+    <div class="step-box" data-step="5">
+      <div class="step-text">More than three, it dies of overcrowding.</div>
+    </div>
+    <div class="step-box" data-step="6">
+      <div class="step-text">Two or three neighbors, it survives.</div>
+    </div>
+    <div class="step-box" data-step="7">
+      <div class="step-text">And if a dead cell is surrounded by exactly three living ones, it sparks to life.</div>
+    </div>
+    <div class="step-box" data-step="8">
+      <div class="step-text">This is the <i>Game of Life</i>, invented by the British mathematician John Horton Conway in 1970.</div>
+    </div>
+    <div class="step-box" data-step="8">
+      <div class="step-text">Well, actually, it is not really a game, since there are no players. <br><br>You only place the opening pattern, step back and watch.</div>
+    </div>
+    <div class="step-box" data-step="8">
+      <div class="step-text">Everything that follows was written into those four rules and that first arrangement of cells.</div>
+    </div>
+    <div class="step-box" data-step="9">
+      <div class="step-text">Once the game is running, no intervention can rewrite what the initial pattern made inevitable.</div>
+    </div>
+  </div>
+</div>
+<script>
+const canvas = document.getElementById('gol');
+const ctx = canvas.getContext('2d');
+const COLS = 30, ROWS = 30;
+let grid = [];
+let currentStep = 0;
+let genInterval = null;
+let zoomAnim = null;
+let viewX = 0, viewY = 0, viewCols = COLS, viewRows = ROWS;
+let targetViewX = 0, targetViewY = 0, targetViewCols = COLS, targetViewRows = ROWS;
+let highlightCells = [], highlightMode = null;
+let zoomTarget = null;
+function resizeCanvas() {
+  const size = Math.min(550, window.innerWidth * 0.9);
+  canvas.width = size;
+  canvas.height = size;
+  drawGrid();
+}
+
+function emptyGrid() {
+  return Array.from({length: ROWS}, () => new Array(COLS).fill(0));
+}
+
+function seedGrid() {
+  const g = emptyGrid();
+  const cx = Math.floor(COLS / 2), cy = Math.floor(ROWS / 2);
+  [[cx,cy],[cx+1,cy],[cx,cy-1],[cx+1,cy+1],[cx-1,cy],
+   [5,5],[6,5],[7,5],[7,4],[6,3],
+   [22,8],[23,8],[24,8],[24,7],[23,6],
+   [cx-8,cy+7],[cx-7,cy+7],[cx-6,cy+7],
+   [cx+8,cy+8],[cx+9,cy+8],[cx+8,cy+9],[cx+9,cy+9]
+  ].forEach(([x,y]) => { if(x>=0&&x<COLS&&y>=0&&y<ROWS) g[y][x]=1; });
+  return g;
+}
+
+function nextGen(g) {
+  const ng = emptyGrid();
+  for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) {
+    let n=0;
+    for(let dr=-1;dr<=1;dr++) for(let dc=-1;dc<=1;dc++) {
+      if(dr===0&&dc===0) continue;
+      n+=g[(r+dr+ROWS)%ROWS][(c+dc+COLS)%COLS];
+    }
+    const a=g[r][c];
+    ng[r][c]=a?(n===2||n===3?1:0):(n===3?1:0);
+  }
+  return ng;
+}
+
+function countNeighbours(g,r,c) {
+  let n=0;
+  for(let dr=-1;dr<=1;dr++) for(let dc=-1;dc<=1;dc++) {
+    if(dr===0&&dc===0) continue;
+    n+=g[(r+dr+ROWS)%ROWS][(c+dc+COLS)%COLS];
+  }
+  return n;
+}
+
+function getNeighbourCells(r,c) {
+  const cells=[];
+  for(let dr=-1;dr<=1;dr++) for(let dc=-1;dc<=1;dc++) {
+    if(dr===0&&dc===0) continue;
+    cells.push([(r+dr+ROWS)%ROWS,(c+dc+COLS)%COLS]);
+  }
+  return cells;
+}
+
+function findCell(mode) {
+  for(let r=1;r<ROWS-1;r++) for(let c=1;c<COLS-1;c++) {
+    const a=grid[r][c], n=countNeighbours(grid,r,c);
+    if(mode==='die-lonely'&&a&&n<2) return [r,c];
+    if(mode==='die-crowd'&&a&&n>3) return [r,c];
+    if(mode==='survive'&&a&&(n===2||n===3)) return [r,c];
+    if(mode==='born'&&!a&&n===3) return [r,c];
+  }
+  return null;
+}
+
+function drawGrid() {
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const bg = isDark ? '#1a1a18' : '#f8f7f2';
+  const cellAlive = isDark ? '#e8e6dc' : '#2c2c2a';
+  const cellDead = isDark ? '#232320' : '#f0efe8';
+  const gridLine = isDark ? '#555' : '#bbb';
+  const cW = canvas.width / viewCols, cH = canvas.height / viewRows;
+
+  ctx.fillStyle = bg;
+  ctx.beginPath(); ctx.roundRect(0,0,canvas.width,canvas.height,8); ctx.fill();
+
+  for(let r=0;r<viewRows;r++) for(let c=0;c<viewCols;c++) {
+    const gr=(Math.floor(viewY)+r)%ROWS, gc=(Math.floor(viewX)+c)%COLS;
+    const x=c*cW, y=r*cH;
+    let color = grid[gr][gc] ? cellAlive : cellDead;
+    if(highlightMode && highlightCells.length) {
+      const isHL = highlightCells.some(([hr,hc])=>hr===gr&&hc===gc);
+      if(highlightMode==='die-lonely'&&isHL) color='#E24B4A';
+      if(highlightMode==='die-crowd'&&isHL) color='#E24B4A';
+      if(highlightMode==='survive'&&isHL) color='#EF9F27';
+      if(highlightMode==='born'&&isHL) color='#1D9E75';
+    }
+    ctx.fillStyle = color;
+    ctx.fillRect(x+0.5, y+0.5, cW-1, cH-1);
+  }
+  if(cW > 5) {
+    ctx.strokeStyle = gridLine; ctx.lineWidth = 0.5;
+    for(let r=0;r<=viewRows;r++){ctx.beginPath();ctx.moveTo(0,r*cH);ctx.lineTo(canvas.width,r*cH);ctx.stroke();}
+    for(let c=0;c<=viewCols;c++){ctx.beginPath();ctx.moveTo(c*cW,0);ctx.lineTo(c*cW,canvas.height);ctx.stroke();}
+  }
+  if(zoomTarget) {
+    const [zr,zc]=zoomTarget;
+    const lr=zr-Math.floor(viewY), lc=zc-Math.floor(viewX);
+    ctx.strokeStyle='#00ffee'; ctx.lineWidth=8;
+    ctx.strokeRect(lc*cW+1, lr*cH+1, cW-2, cH-2);
+  }
+}
+
+function lerp(a,b,t){return a+(b-a)*t;}
+
+function animateToZoom(callback) {
+  const steps=20, sx=viewX,sy=viewY,sc=viewCols,sr=viewRows;
+  let s=0;
+  if(zoomAnim) cancelAnimationFrame(zoomAnim);
+  function step(){
+    s++;
+    const t=s/steps, ease=t<0.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+    viewX=lerp(sx,targetViewX,ease); viewY=lerp(sy,targetViewY,ease);
+    viewCols=lerp(sc,targetViewCols,ease); viewRows=lerp(sr,targetViewRows,ease);
+    drawGrid();
+    if(s<steps) zoomAnim=requestAnimationFrame(step);
+    else if(callback) callback();
+  }
+  step();
+}
+
+function setZoom(cx,cy,cols,rows) {
+  targetViewX=Math.max(0,Math.min(COLS-cols,cx-cols/2));
+  targetViewY=Math.max(0,Math.min(ROWS-rows,cy-rows/2));
+  targetViewCols=cols; targetViewRows=rows;
+}
+
+function resetZoom() {
+  targetViewX=0; targetViewY=0;
+  targetViewCols=COLS; targetViewRows=ROWS;
+}
+
+function startPlaying(ms=150) {
+  stopPlaying();
+  genInterval=setInterval(()=>{ grid=nextGen(grid); drawGrid(); }, ms);
+}
+
+function stopPlaying() {
+  if(genInterval){ clearInterval(genInterval); genInterval=null; }
+}
+
+function goToStep(step) {
+  if(step===currentStep) return;
+  currentStep=step;
+  document.querySelectorAll('.step-box').forEach(el=>{
+    el.classList.toggle('active', +el.dataset.step===step);
+  });
+  stopPlaying();
+  highlightCells=[]; highlightMode=null; zoomTarget=null;
+
+  if(step===1) {
+    drawGrid();
+    grid=emptyGrid(); resetZoom();
+    viewX=0;viewY=0;viewCols=COLS;viewRows=ROWS; drawGrid();
+  } else if(step===2) {
+    grid=seedGrid(); resetZoom();
+    viewX=0;viewY=0;viewCols=COLS;viewRows=ROWS; drawGrid();
+  } else if(step===3) {
+    if(!grid.some(r=>r.some(c=>c))) grid=seedGrid();
+    resetZoom(); animateToZoom(()=>startPlaying(150));
+  } else if(step===4||step===5||step===6||step===7) {
+    stopPlaying();
+    for(let i=0;i<15;i++) grid=nextGen(grid);
+    const modeMap={4:'die-lonely',5:'die-crowd',6:'survive',7:'born'};
+    const mode=modeMap[step];
+    let found=null;
+    for(let attempt=0;attempt<40&&!found;attempt++){ grid=nextGen(grid); found=findCell(mode); }
+    if(!found){ grid=seedGrid(); for(let i=0;i<10;i++) grid=nextGen(grid); found=findCell(mode); }
+    if(found) {
+      const [r,c]=found;
+      zoomTarget=[r,c];
+      setZoom(c,r,9,9);
+      highlightMode=mode;
+      highlightCells=[[r,c],...getNeighbourCells(r,c).filter(([nr,nc])=>grid[nr][nc])];
+      animateToZoom(()=>drawGrid());
+    } else drawGrid();
+  } else if(step===8) {
+    highlightCells=[]; highlightMode=null; zoomTarget=null;
+    resetZoom(); animateToZoom(()=>startPlaying(120));
+  } else if(step===9) {
+    highlightCells=[]; highlightMode=null; zoomTarget=null;
+    resetZoom(); animateToZoom(()=>startPlaying(120));
+    setTimeout(()=>{
+        stopPlaying();
+    },2000);
+  }
+}
+
+// Click triggers
+document.querySelectorAll('.step-box').forEach(el=>{
+  el.addEventListener('click',()=>goToStep(+el.dataset.step));
+});
+
+// Scroll-based midpoint trigger using IntersectionObserver
+// Trigger when the step box crosses the vertical midpoint of the scrolling container
+// Since we're in an iframe, we observe within the document scroll
+
+function setupScrollObserver() {
+  const stepsCol = document.getElementById('steps-col');
+  
+  // Use IntersectionObserver with a rootMargin that creates a thin band at 50% of viewport
+  // rootMargin: top = -(50% - 1px), bottom = -(50% - 1px) creates a 2px band at center
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        const step = +entry.target.dataset.step;
+        goToStep(step);
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '-48% 0px -48% 0px',
+    threshold: 0
+  });
+
+  document.querySelectorAll('.step-box').forEach(el => observer.observe(el));
+}
+
+// Init
+grid=emptyGrid();
+viewX=0;viewY=0;viewCols=COLS;viewRows=ROWS;
+//drawGrid();
+goToStep(1);
+setupScrollObserver();
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+</script>

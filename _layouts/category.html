@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ page.title | default: site.title }}</title>
+    <link rel="icon" href="{{ '/assets/images/logo.svg' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css?v=4' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/archives.css?v=2' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/features.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/staff.css?v=2' | relative_url }}">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRK36XV5G8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZRK36XV5G8');
+</script>
+</head>
+<body>
+  {% include navigation.html %}
+<main>
+    <div class="features-container">
+    <div class="features-intro-container">
+        <div class="features-intro-title">
+            
+            <h3>{{ page.title }}</h3>
+
+        </div>
+        <div class="features-intro-content" >
+            <h2>{{ page.intro }}</h2>
+             <!-- 퀵 메뉴 바 -->
+            <hr class="quickNavBar-line" style="border: 1.5px solid #fb4e26">
+        </div>
+    </div>
+    <div class="articles-container">
+        {% assign filtered_posts = site.articles | where: "category", page.category %}
+        {% assign sorted_posts = filtered_posts | sort: "publish_date" | reverse %}
+        {% assign total_posts = sorted_posts.size %}
+        {% assign total_pages = total_posts | divided_by: 10 | plus:1 %}
+        <div class="articles-list" id="articlesList">
+            {% assign offset = page.page_num | minus:1 | times: 10 %}
+            {% for post in sorted_posts limit:10 offset:offset %}
+            <div
+            class="article hover-pointer article-item"
+            onclick="window.location.href='{{ post.url }}'">
+
+            <div class="article-thumbnail">
+                <img src="{{ post.picture_url }}" alt="{{ post.title }}">
+            </div>
+
+            <div class="article-preview-container">
+                <div class="article-preview-title">{{ post.title }}</div>
+                <div class="article-preview-author">{{ post.author_name }}</div>
+                <div class="article-preview-content">
+                {{ post.content | strip_html | truncate: 200 }}
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+      </div>
+    </div>
+        <div class="page-flipper-container" style="margin: 10px 0; font-size: 20px;">
+            <a class="page-element prev" href="/{{ page.link }}/0" style="display:none;">0</a>
+            {% for i in (1..total_pages) %}
+
+            <a class="page-element {% if i == page.page_num %}current-element{% endif %}" href="/{{ page.link }}/{{ i }}">
+                {{ i }}
+            </a>
+            {% endfor %}
+            <a class="page-element next" href="/{{ page.link }}/6" style="display:none;">6</a>
+        </div>
+  </div>
+</main>
+  {% include footer.html %}
+</body>
+</html>

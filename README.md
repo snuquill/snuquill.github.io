@@ -37,3 +37,30 @@ modified_date: {YYYY}-{MM}-{DD}T09:16:11.000Z
 
 
 - to serve locally, use `bundle exec jekyll serve` in terminal
+- to test on mobile, use `bundle exec jekyll serve --host 0.0.0.0 --port 4000` in terminal and go to `http:\\<your-ipv4>:4000`
+- find ip by typing `ipconfig` in terminal
+
+
+
+(to have pages per editions)
+
+```
+---
+        {% assign posts = site.articles | where: "category", "FEATURES" %}
+        
+        {% assign edition = site.data.editions | where: "name", "84th Edition" | first %}
+        {% assign start = edition.start | date: "%s" %}
+        {% assign end = edition.end | date: "%s" %}
+
+        {% assign filtered_posts = "" | split: "" %}
+        {% for post in posts %}
+        {% assign pub = post.publish_date | date: "%s" %}
+
+        {% if pub > start and pub < end %}
+            {% assign filtered_posts = filtered_posts | push: post %}
+        {% endif %}
+        {% endfor %}
+
+        {% assign sorted_posts = filtered_posts | sort: "publish_date" | reverse %}
+---
+```

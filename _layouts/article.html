@@ -55,6 +55,18 @@
                         <div class="author-role"></div>
                         <div class="author-name">{{ page.author_name }}</div>
                         <div class="author-email"></div>
+                        {% assign pub = page.publish_date | date: "%s" %}
+
+                        {% for edition in site.data.editions %}
+                        {% assign start = edition.start | date: "%s" %}
+                        {% assign end = edition.end | date: "%s" %}
+
+                        {% if pub > start and pub < end %}
+                            <div class="edition" style="line-height: 1;"><small><strong style="color: #FB4E26;">{{ edition.name }}</strong><br>{{ edition.sem }} Semester</small></div>
+                            {% break %}
+                        {% endif %}
+                        {% endfor %}                        
+
                     </div>
                 </div>
             </div>

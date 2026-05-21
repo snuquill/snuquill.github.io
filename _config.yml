@@ -36,7 +36,9 @@ collections:
   pages:
     output: true
 
-
+# _config.yml
+exclude:
+  - _private
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
